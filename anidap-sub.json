@@ -1,0 +1,11 @@
+{
+  "sourceName": "Anidap (SUB)",
+  "version": "0.1.1",
+  "baseUrl": "https://anidap.lol",
+  "iconUrl": "https://anidap.lol/favicon.ico",
+  "scriptUrl": "https://mofongoler-pixel.github.io/shirox-modules/anidap-sub.js",
+  "type": "anime",
+  "asyncJS": true,
+  "language": "English",
+  "softsub": true
+}
