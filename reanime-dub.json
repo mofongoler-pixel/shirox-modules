@@ -1,0 +1,11 @@
+{
+  "sourceName": "Re:ANIME (DUB)",
+  "version": "0.1.0",
+  "baseUrl": "https://reanime.to",
+  "iconUrl": "https://reanime.to/favicon.ico",
+  "scriptUrl": "https://mofongoler-pixel.github.io/shirox-modules/reanime-dub.js",
+  "type": "anime",
+  "asyncJS": true,
+  "language": "English",
+  "softsub": true
+}
