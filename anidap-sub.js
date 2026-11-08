@@ -34,6 +34,29 @@ async function searchResults(keyword) {
         return { title: item.titleEnglish || item.titleRomaji, image: cover.extraLarge || cover.large || cover.medium || "", href: ANIDAP_SITE + "/anime/" + encodeURIComponent(item.id) };
     }));
 }
+async function extractDetails(url) {
+    var id = anidapID(url);
+    var response = await anidapJSON("https://graphql.anidap.lol/graphql", {
+        query: "query CatalogAnime($filter: AnimeCatalogFilterInput, $limit: Int) { catalogAnime(filter: $filter, limit: $limit) { items { id description titleEnglish titleRomaji titles seasonYear } } }",
+        variables: { filter: { ids: [id] }, limit: 1 }
+    });
+    var items = response.data && response.data.catalogAnime && response.data.catalogAnime.items;
+    if (!Array.isArray(items) || !items.length || items[0].id !== id) {
+        throw new Error("Anidap title details are unavailable.");
+    }
+    var item = items[0];
+    var aliases = [item.titleEnglish, item.titleRomaji];
+    if (item.titles) {
+        aliases.push(item.titles.ja, item.titles["x-jat"]);
+    }
+    aliases = aliases.filter(function(value, index, all) {
+        return typeof value === "string" && value.length && all.indexOf(value) === index;
+    });
+    var description = String(item.description || "").replace(/<br\s*\/?\s*>/gi, "\n").replace(/<[^>]+>/g, "");
+    description = description.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&nbsp;/g, " ");
+    return JSON.stringify([{description: description || "N/A", aliases: aliases.join(" / ") || "N/A", airdate: item.seasonYear ? String(item.seasonYear) : "N/A"}]);
+}
+
 async function extractEpisodes(url) {
     var id = anidapID(url);
     var result = await anidapJSON(ANIDAP_PLAYER + "/episodes?id=" + encodeURIComponent(id));

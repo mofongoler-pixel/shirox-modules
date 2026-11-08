@@ -1,6 +1,6 @@
 {
   "sourceName": "Anidap (DUB)",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "baseUrl": "https://anidap.lol",
   "iconUrl": "https://anidap.lol/favicon.ico",
   "scriptUrl": "https://mofongoler-pixel.github.io/shirox-modules/anidap-dub.js",
