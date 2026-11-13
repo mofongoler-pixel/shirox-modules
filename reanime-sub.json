@@ -1,8 +1,8 @@
 {
   "sourceName": "Re:ANIME (SUB)",
-  "version": "0.1.2",
-  "baseUrl": "https://reanime.to",
-  "iconUrl": "https://reanime.to/favicon.ico",
+  "version": "0.1.3",
+  "baseUrl": "https://reanime.cz",
+  "iconUrl": "https://reanime.cz/favicon.ico",
   "scriptUrl": "https://mofongoler-pixel.github.io/shirox-modules/reanime-sub.js",
   "type": "anime",
   "asyncJS": true,

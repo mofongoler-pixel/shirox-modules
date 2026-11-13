@@ -6659,9 +6659,9 @@
 // Unofficial Re:ANIME adapter. Uses the public player bootstrap and Shirox playlist interface.
 // No separate proxy service, persistent keys, accounts, or Mac dependency.
 var REANIME_AUDIO = "sub";
-var REANIME_BASE = "https://reanime.to";
+var REANIME_BASE = "https://reanime.cz";
 var reanimeCache = {};
-function reanimeLog(message) { console.warn("[ReAnime 0.1.2 " + REANIME_AUDIO + "] " + message); }
+function reanimeLog(message) { console.warn("[ReAnime 0.1.3 " + REANIME_AUDIO + "] " + message); }
 // Shirox's native atob/btoa bridge is UTF-8 oriented, not binary-safe.
 function reanimeDecode64(input) {
     var alphabet="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/",text=String(input).replace(/\s/g,""),out="",acc=0,bits=0;
@@ -6681,7 +6681,7 @@ async function reanimeFetch(url, text) {
     return text ? await response.text() : await response.json();
 }
 function reanimeLink(url) {
-    var m = String(url).match(/^https:\/\/reanime\.to\/(?:anime|watch)\/([A-Za-z0-9_-]+)(?:[?#]|$)/);
+    var m = String(url).match(/^https:\/\/reanime\.(?:to|cz)\/(?:anime|watch)\/([A-Za-z0-9_-]+)(?:[?#]|$)/);
     if (!m) throw reanimeError("Invalid title link.");
     return { slug: m[1], episode: (String(url).match(/[?&]ep=([0-9]+(?:\.[0-9]+)?)(?:&|$)/) || [])[1], anilist: (String(url).match(/[?&]al=([0-9]+)(?:&|$)/) || [])[1] };
 }
