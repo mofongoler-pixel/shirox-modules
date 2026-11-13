@@ -12,3 +12,7 @@ Subtitles: exposes text ASS/SRT/VTT/SSA tracks; excludes image-only SUP tracks. 
 Providers can change. Unsupported key-payload formats or unvalidated playlists fail explicitly instead of returning a broken link. At most three servers and two playlist candidates per server are tried; no continuous polling. Detail cache is bounded to 20 entries / 3 minutes. No module caches media links across playback sessions.
 
 Version 0.1.2 video playback was confirmed on an iPhone running Shirox 1.0.6 on November 8, 2026. Live SUB/DUB stream resolution checks passed; subtitle rendering and English DUB audio selection on the phone remain unverified. This personal integration is not affiliated with Re:ANIME, Shirox or the video providers.
+
+## 0.1.3 — domain migration repair
+
+November12,2026: Re:ANIME moved to https://reanime.cz/. The old .to domain redirects API paths to its homepage, producing the misleading catalogue-format error. Both modules now use .cz and accept existing .to title/episode links. Live search/details/episode/stream checks pass for SUB and DUB; playback on the phone with this release remains unverified. Update the existing modules in Shirox; the module URLs are unchanged.
